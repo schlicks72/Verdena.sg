@@ -6,6 +6,26 @@ import maskforge from '../assets/c1758f93fed1a9921f5cf29fe778bda06ba45946.png';
 import zoomout from '../assets/f0920058df1d2116b868235cd6b521fad6f481e1.png';
 import brandGuidelines from '../assets/3f55126ab4be5a53363111be5975ec6628d49600.png';
 
+// Logos
+import logoVerdena from '../assets/Logos/Verdena.png';
+import logoScaleFactory from '../assets/Logos/TheScaleFactory.png';
+import logoMarketingSociety from '../assets/Logos/The Marketing Society.png';
+import logoWGI from '../assets/Logos/WGI.webp';
+import logoAccenture from '../assets/Logos/Accenture.png';
+import logoWPP from '../assets/Logos/WPP.png';
+import logoDeutscheBank from '../assets/Logos/Deutsche Bank.png';
+import logoInsead from '../assets/Logos/Insead.png';
+import logoKaplan from '../assets/Logos/Kaplan (Securities Institute).png';
+import logoLBS from '../assets/Logos/LBS.jpeg';
+import logoMiniMBA from '../assets/Logos/MiniMBA.jpeg';
+import logoMonash from '../assets/Logos/Monash.png';
+import logoSaid from '../assets/Logos/SAIID.png';
+import speakingPhoto from '../assets/Russia Conference.jpg';
+import logo375ai from '../assets/Logos/375ai.webp';
+import logoCogX from '../assets/Logos/CogX.png';
+import logoTindle from '../assets/Logos/Tindle.png';
+import logoFira from '../assets/Logos/Fira.jpeg';
+
 // Photography images
 import photo1 from '../assets/carousel-photography/Image 1.jpg';
 import photo2 from '../assets/carousel-photography/Image 2.jpg';
@@ -52,7 +72,14 @@ const watchImages = [watch1, watch2, watch3, watch4, watch5, watch6, watch7, wat
 // Portrait
 import portraitBW from '../assets/CS Pic (B&W).jpg';
 
-const heroPhoto = photoImages[Math.floor(Math.random() * photoImages.length)];
+// Shuffle and assign a unique random photo to each section hero
+const shuffledPhotos = [...photoImages].sort(() => Math.random() - 0.5);
+const heroPhoto = shuffledPhotos[0];
+const aboutPhoto = shuffledPhotos[1];
+const workPhoto = shuffledPhotos[2];
+const projectsPhoto = shuffledPhotos[3];
+const creativePhoto = shuffledPhotos[4];
+const investmentsPhoto = shuffledPhotos[5];
 
 import { ArrowUpRight, Mail, Linkedin, MessageCircle, X, ChevronDown } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -143,7 +170,7 @@ export default function App() {
               </h1>
 
               <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl leading-relaxed">
-                30+ years leading businesses across EMEA and Asia Pacific, grounded by a constant return to my growing list of creative passions.
+                Experienced Business Leader | Advisor | Regional CEO | Marketing & Sales Professional | Investor | Speaker | Author | Creator
               </p>
 
               <div className="flex gap-4">
@@ -185,7 +212,7 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="grid md:grid-cols-2 gap-16 items-center"
+            className="grid md:grid-cols-2 gap-16 items-start"
           >
             {/* Left: Image */}
             <div className="relative">
@@ -196,17 +223,11 @@ export default function App() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 opacity-20">
-                <img src={verdenaTree} alt="" className="w-full h-full object-contain" />
-              </div>
             </div>
 
             {/* Right: Content */}
             <div className="space-y-8">
               <div>
-                <span className="text-[#53354a] font-bold text-sm tracking-wider uppercase mb-4 block">
-                  Who I am
-                </span>
                 <h2 className="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight">
                   A bit about me and what I do.
                 </h2>
@@ -241,33 +262,59 @@ export default function App() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="space-y-4 pt-6 border-t border-[#e0e0e0]"
+                  className="space-y-0 pt-6 border-t border-[#e0e0e0]"
                 >
-                  <CareerItem
-                    role="Managing Director, Enterprise B2B Practice Lead"
-                    company="Accenture Song APAC"
-                    years="2019–2025"
-                  />
-                  <CareerItem
-                    role="CEO, APAC"
-                    company="Wunderman (WPP)"
-                    years="2016–2019"
-                  />
-                  <CareerItem
-                    role="Co-Founder & CEO, EMEA"
-                    company="Xaxis (WPP)"
-                    years="2010–2016"
-                  />
-                  <CareerItem
-                    role="Partner"
-                    company="Mindshare Worldwide (WPP)"
-                    years="2006–2010"
-                  />
-                  <CareerItem
-                    role="Vice President, Project Finance & Advisory Practice"
-                    company="Deutsche Bank Australia"
-                    years="1995–2003"
-                  />
+                  {/* Accenture */}
+                  <div className="flex gap-4 py-4 border-b border-[#e0e0e0]">
+                    <img src={logoAccenture} alt="Accenture" className="h-8 w-8 object-contain flex-shrink-0 mt-0.5" />
+                    <div className="flex-1 flex justify-between items-start">
+                      <div>
+                        <p className="font-semibold text-[#1a1a1a]">Managing Director, Enterprise B2B Practice Lead</p>
+                        <p className="text-sm text-[#4a4a4a]">Accenture Song APAC</p>
+                      </div>
+                      <span className="text-sm text-[#53354a] font-medium flex-shrink-0 ml-4">2019–2025</span>
+                    </div>
+                  </div>
+
+                  {/* WPP Group */}
+                  <div className="flex gap-4 py-4 border-b border-[#e0e0e0]">
+                    <img src={logoWPP} alt="WPP" className="h-8 w-8 object-contain flex-shrink-0 mt-0.5" />
+                    <div className="flex-1 space-y-3">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <p className="font-semibold text-[#1a1a1a]">CEO, APAC</p>
+                          <p className="text-sm text-[#4a4a4a]">Wunderman</p>
+                        </div>
+                        <span className="text-sm text-[#53354a] font-medium flex-shrink-0 ml-4">2016–2019</span>
+                      </div>
+                      <div className="flex justify-between items-start border-t border-[#e0e0e0]/50 pt-3">
+                        <div>
+                          <p className="font-semibold text-[#1a1a1a]">Co-Founder & CEO, EMEA</p>
+                          <p className="text-sm text-[#4a4a4a]">Xaxis</p>
+                        </div>
+                        <span className="text-sm text-[#53354a] font-medium flex-shrink-0 ml-4">2010–2016</span>
+                      </div>
+                      <div className="flex justify-between items-start border-t border-[#e0e0e0]/50 pt-3">
+                        <div>
+                          <p className="font-semibold text-[#1a1a1a]">Partner</p>
+                          <p className="text-sm text-[#4a4a4a]">Mindshare Worldwide</p>
+                        </div>
+                        <span className="text-sm text-[#53354a] font-medium flex-shrink-0 ml-4">2006–2010</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Deutsche Bank */}
+                  <div className="flex gap-4 py-4">
+                    <img src={logoDeutscheBank} alt="Deutsche Bank" className="h-8 w-8 object-contain flex-shrink-0 mt-0.5" />
+                    <div className="flex-1 flex justify-between items-start">
+                      <div>
+                        <p className="font-semibold text-[#1a1a1a]">Vice President, Project Finance & Advisory Practice</p>
+                        <p className="text-sm text-[#4a4a4a]">Deutsche Bank Australia</p>
+                      </div>
+                      <span className="text-sm text-[#53354a] font-medium flex-shrink-0 ml-4">1995–2003</span>
+                    </div>
+                  </div>
                 </motion.div>
               )}
 
@@ -285,38 +332,14 @@ export default function App() {
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
-                  className="space-y-4 pt-6 border-t border-[#e0e0e0]"
+                  className="space-y-0 pt-6 border-t border-[#e0e0e0]"
                 >
-                  <CareerItem
-                    role="Transform Your Business with AI"
-                    company="INSEAD"
-                    years="2025–2026"
-                  />
-                  <CareerItem
-                    role="Mini MBA in Marketing"
-                    company="Mark Ritson / MiniMBA"
-                    years="2025–2026"
-                  />
-                  <CareerItem
-                    role="Blockchain Strategy Programme"
-                    company="Saïd Business School, University of Oxford"
-                    years="2022"
-                  />
-                  <CareerItem
-                    role="MBA"
-                    company="London Business School (exchange at Kellogg, Northwestern)"
-                    years="2003–2005"
-                  />
-                  <CareerItem
-                    role="Graduate Diploma in Applied Finance"
-                    company="Securities Institute of Australia"
-                    years="1996–2000"
-                  />
-                  <CareerItem
-                    role="Bachelor of Economics (Hons)"
-                    company="Monash University, Melbourne"
-                    years="1992–1995"
-                  />
+                  <LogoItem logo={logoInsead} role="Transform Your Business with AI" company="INSEAD" years="2025–2026" />
+                  <LogoItem logo={logoMiniMBA} role="Mini MBA in Marketing" company="Mark Ritson / MiniMBA" years="2025–2026" />
+                  <LogoItem logo={logoSaid} role="Blockchain Strategy Programme" company="Saïd Business School, University of Oxford" years="2022" />
+                  <LogoItem logo={logoLBS} role="MBA" company="London Business School (exchange at Kellogg, Northwestern)" years="2003–2005" />
+                  <LogoItem logo={logoKaplan} role="Graduate Diploma in Applied Finance" company="Securities Institute of Australia" years="1996–2000" />
+                  <LogoItem logo={logoMonash} role="Bachelor of Economics (Hons)" company="Monash University, Melbourne" years="1992–1995" last />
                 </motion.div>
               )}
             </div>
@@ -324,8 +347,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* Current Work - Professional Focus */}
-      <section id="work" className="relative z-10 pt-20 pb-32 bg-[#fafafa] scroll-mt-24">
+      {/* Current Work Hero */}
+      <SectionHero id="work" image={workPhoto} title="Advisory, board roles, and strategic consulting" subtitle="Today, I work with organisations and leadership teams across Asia Pacific to unlock growth." />
+
+      {/* Current Work Content */}
+      <section className="relative z-10 pt-16 pb-16 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -333,56 +359,48 @@ export default function App() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="mb-16">
-              <span className="text-[#53354a] font-bold text-sm tracking-wider uppercase mb-4 block">
-                Current Work
-              </span>
-              <h2 className="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight max-w-4xl">
-                Advisory, board roles, and strategic consulting
-              </h2>
-              <p className="text-xl text-[#4a4a4a] max-w-3xl">
-                Today, I work with organisations and leadership teams across Asia Pacific to unlock growth.
-              </p>
-            </div>
-
-            <div className="space-y-12 mb-12">
-              <WorkPanel
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              <SimpleCard
                 title="Verdena"
                 role="Founder & Principal"
                 description="Strategic consulting for businesses across APAC. Aligning technology and strategy with commercial strategy and real-world execution."
                 highlights={["Growth Strategy", "Data & Technology", "Commercial Execution"]}
-                image={photo7}
+                logo={logoVerdena}
               />
 
-              <WorkPanel
+              <SimpleCard
                 title="The Scale Factory"
                 role="Advisor"
                 description="Helping industrial technology brands from North America and Europe scale and grow across Asia Pacific through strategic advisory, go-to-market acceleration, and operational excellence."
                 highlights={["APAC Expansion", "Client Growth", "Market Strategy"]}
-                image={photo8}
-                reversed
+                logo={logoScaleFactory}
               />
 
-              <WorkPanel
+              <SimpleCard
                 title="The Marketing Society"
                 role="Board Member (Singapore Chapter)"
                 description="Contributing to the advancement of marketing leadership and practice across the industry through governance and strategic direction."
                 highlights={["Industry Leadership", "Professional Development", "Strategic Governance"]}
-                image={photo9}
+                logo={logoMarketingSociety}
               />
             </div>
 
             {/* Additional Advisory */}
-            <div className="bg-white rounded-3xl p-10 border border-[#e0e0e0] shadow-sm">
-              <h3 className="text-2xl font-black text-[#1a1a1a] mb-6">Additional Advisory Work</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="bg-white rounded-3xl overflow-hidden border border-[#e0e0e0] shadow-sm flex flex-col">
+                <div className="p-8 flex-1">
+                  <img src={logoWGI} alt="WGI" className="h-8 w-auto object-contain mb-4" />
                   <p className="font-semibold text-[#53354a] mb-2">WGI Singapore – Advisory Board Member</p>
-                  <p className="text-[#4a4a4a]">Founded by the then 14-year old Chance Wilson who had seen the impact of illiteracy on kids around him, WGI helps promote literacy now in seven countries around the world through a variety of engagements.</p>
+                  <p className="text-[#4a4a4a] text-sm">Founded by the then 14-year old Chance Wilson who had seen the impact of illiteracy on kids around him, WGI helps promote literacy now in seven countries around the world through a variety of engagements.</p>
                 </div>
-                <div>
+              </div>
+              <div className="bg-white rounded-3xl overflow-hidden border border-[#e0e0e0] shadow-sm flex flex-col">
+                <div className="aspect-[16/9] overflow-hidden">
+                  <img src={speakingPhoto} alt="Caspar speaking at conference" className="w-full h-full object-cover" />
+                </div>
+                <div className="p-8 flex-1">
                   <p className="font-semibold text-[#53354a] mb-2">Industry Speaking & Writing</p>
-                  <p className="text-[#4a4a4a]">Author, keynote speaker, and panelist on AI, technology and creativity, and their impact on business growth.</p>
+                  <p className="text-[#4a4a4a] text-sm">Author, keynote speaker, and panelist on AI, technology and creativity, and their impact on business growth.</p>
                 </div>
               </div>
             </div>
@@ -390,8 +408,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* Projects - Immersive Cards */}
-      <section id="projects" className="pt-20 pb-16 bg-white scroll-mt-24">
+      {/* Projects Hero */}
+      <SectionHero id="projects" image={projectsPhoto} title="Bringing my ideas (and procrastinations) to life" subtitle="I love that with technology today, it no longer matters if I am procrastinating or building. Being lazy or being efficient. The lines have blurred to the point that they no longer exist." />
+
+      {/* Projects Content */}
+      <section className="relative z-10 pt-16 pb-16 bg-white">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -399,17 +420,6 @@ export default function App() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="mb-16">
-              <span className="text-[#53354a] font-bold text-sm tracking-wider uppercase mb-4 block">
-                Projects
-              </span>
-              <h2 className="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight max-w-3xl">
-                Bringing my ideas (and procrastinations) to life
-              </h2>
-              <p className="text-xl text-[#4a4a4a] max-w-2xl">
-                I love that with technology today, it no longer matters if I am procrastinating or building. Being lazy or being efficient. The lines have blurred to the point that they no longer exist. Here are some of the projects I am spending time on right now, from writing books, to building products.
-              </p>
-            </div>
 
             <div className="space-y-12">
               <ImmersiveProjectCard
@@ -445,8 +455,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* Creative Work - Gallery */}
-      <section id="creative" className="pt-20 pb-16 bg-[#fafafa] scroll-mt-24">
+      {/* Creative Hero */}
+      <SectionHero id="creative" image={creativePhoto} title="Creativity with disciplined execution" subtitle='AI is enabling me to create business and products like I could never have done before. But for me that makes it more important than ever to dedicate some of my time to creating things in the "real world".' />
+
+      {/* Creative Content */}
+      <section className="relative z-10 pt-16 pb-16 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -454,17 +467,6 @@ export default function App() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="mb-16">
-              <span className="text-[#53354a] font-bold text-sm tracking-wider uppercase mb-4 block">
-                Creativity
-              </span>
-              <h2 className="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight max-w-3xl">
-                Craft and patience
-              </h2>
-              <p className="text-xl text-[#4a4a4a] max-w-2xl">
-                AI is enabling me to create business and products like I could never have done before. But for me that makes it more important than ever to dedicated some of my time to creating things in the "real world".
-              </p>
-            </div>
 
             {/* Three Panel Carousels - Staggered like projects */}
             <div className="space-y-12">
@@ -502,8 +504,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* Investments */}
-      <section id="investments" className="pt-20 pb-16 bg-white scroll-mt-24">
+      {/* Investments Hero */}
+      <SectionHero id="investments" image={investmentsPhoto} title="Backing founders and ideas" subtitle="I invest in people and businesses across technology, food, and experience: founders with conviction and ideas worth backing." />
+
+      {/* Investments Content */}
+      <section className="relative z-10 pt-16 pb-16 bg-white">
         <div className="max-w-7xl mx-auto px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -511,39 +516,32 @@ export default function App() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <div className="mb-16">
-              <span className="text-[#53354a] font-bold text-sm tracking-wider uppercase mb-4 block">
-                Investments
-              </span>
-              <h2 className="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight max-w-3xl">
-                Backing founders and ideas I believe in
-              </h2>
-              <p className="text-xl text-[#4a4a4a] max-w-2xl">
-                I invest in people and businesses across technology, food, and experience: founders with conviction and ideas worth backing.
-              </p>
-            </div>
 
             <div className="grid md:grid-cols-4 gap-6">
               <InvestmentCard
                 name="375ai"
                 description="Decentralised edge data intelligence network leveraging AI and blockchain."
                 since="2022"
+                logo={logo375ai}
               />
               <InvestmentCard
                 name="CogX"
                 description="AI and leadership knowledge platform connecting the world's top thinkers."
                 since="2019"
+                logo={logoCogX}
               />
               <InvestmentCard
                 name="TiNDLE Foods (exited)"
                 description="Plant-based food company on a mission to make sustainable eating delicious."
                 since="2021"
+                logo={logoTindle}
               />
               <InvestmentCard
                 name="Fira BeachClub Group"
                 description="Experience-led hospitality brand in Phuket, Thailand — and the only investment I have made where I can drink a beer and watch my favourite DJs."
                 since="2024"
                 role="Investor & Advisor"
+                logo={logoFira}
               />
             </div>
           </motion.div>
@@ -752,66 +750,6 @@ function ImmersiveProjectCard({
   );
 }
 
-// Work Panel Component - split editorial layout
-function WorkPanel({
-  title,
-  role,
-  description,
-  highlights,
-  image,
-  reversed = false,
-}: {
-  title: string;
-  role: string;
-  description: string;
-  highlights: string[];
-  image: string;
-  reversed?: boolean;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8 }}
-      className={`group grid md:grid-cols-2 gap-8 items-start bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${
-        reversed ? 'md:grid-flow-dense' : ''
-      }`}
-    >
-      <div className={`aspect-[16/10] overflow-hidden ${reversed ? 'md:col-start-2' : ''}`}>
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
-      </div>
-
-      <div className={`p-10 flex flex-col justify-between h-full ${reversed ? 'md:col-start-1 md:row-start-1' : ''}`}>
-        <div>
-          <span className="text-[#53354a] font-bold text-xs tracking-widest uppercase mb-3 block">
-            {role}
-          </span>
-          <h3 className="text-3xl font-black text-[#1a1a1a] mb-4 group-hover:text-[#53354a] transition-colors">
-            {title}
-          </h3>
-          <p className="text-[#4a4a4a] leading-relaxed mb-6">{description}</p>
-        </div>
-
-        <div className="flex flex-wrap gap-2">
-          {highlights.map((highlight, i) => (
-            <span
-              key={i}
-              className="text-xs font-medium bg-[#53354a]/10 text-[#53354a] px-3 py-1 rounded-full"
-            >
-              {highlight}
-            </span>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
 // Creative Carousel Component - crossfades through images
 function CreativeCarousel({
   images,
@@ -957,5 +895,126 @@ function CreativePanel({
         </div>
       </div>
     </motion.a>
+  );
+}
+
+// Section Hero Component - full-width photo banner with title
+function SectionHero({
+  id,
+  image,
+  title,
+  subtitle,
+}: {
+  id: string;
+  image: string;
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <section id={id} className="relative h-[50vh] min-h-[400px] flex items-end scroll-mt-24 overflow-hidden">
+      <div className="absolute inset-0">
+        <img src={image} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+      </div>
+      <div className="relative z-10 w-full pb-12">
+        <div className="max-w-7xl mx-auto px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-4 leading-tight max-w-4xl whitespace-pre-line">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed">
+                {subtitle}
+              </p>
+            )}
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Simple Card Component - clean white card for 3-column grids
+function SimpleCard({
+  title,
+  role,
+  description,
+  highlights,
+  logo,
+}: {
+  title: string;
+  role: string;
+  description: string;
+  highlights: string[];
+  logo?: string;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+      className="bg-white rounded-2xl p-8 border border-[#e0e0e0] hover:border-[#53354a] hover:shadow-lg transition-all duration-300 group flex flex-col"
+    >
+      {logo && (
+        <div className="h-10 mb-6 flex items-center">
+          <img src={logo} alt={title} className="h-full w-auto object-contain" />
+        </div>
+      )}
+      <div className="mb-6">
+        <h3 className="text-2xl font-black text-[#1a1a1a] mb-2 group-hover:text-[#53354a] transition-colors">
+          {title}
+        </h3>
+        <p className="text-sm font-semibold text-[#53354a]">{role}</p>
+      </div>
+
+      <p className="text-[#4a4a4a] leading-relaxed mb-6 flex-1">
+        {description}
+      </p>
+
+      <div className="flex flex-wrap gap-2">
+        {highlights.map((highlight, i) => (
+          <span
+            key={i}
+            className="text-xs font-medium bg-[#53354a]/10 text-[#53354a] px-3 py-1 rounded-full"
+          >
+            {highlight}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+}
+
+// Logo Item Component - timeline entry with logo
+function LogoItem({
+  logo,
+  role,
+  company,
+  years,
+  last = false,
+}: {
+  logo: string;
+  role: string;
+  company: string;
+  years: string;
+  last?: boolean;
+}) {
+  return (
+    <div className={`flex gap-4 py-4 ${last ? '' : 'border-b border-[#e0e0e0]'}`}>
+      <img src={logo} alt={company} className="h-8 w-8 object-contain flex-shrink-0 mt-0.5" />
+      <div className="flex-1 flex justify-between items-start">
+        <div>
+          <p className="font-semibold text-[#1a1a1a]">{role}</p>
+          <p className="text-sm text-[#4a4a4a]">{company}</p>
+        </div>
+        <span className="text-sm text-[#53354a] font-medium flex-shrink-0 ml-4">{years}</span>
+      </div>
+    </div>
   );
 }
