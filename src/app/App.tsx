@@ -89,6 +89,7 @@ import ContactForm from './components/ContactForm';
 export default function App() {
   const heroRef = useRef(null);
   const [chatOpen, setChatOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [careerExpanded, setCareerExpanded] = useState(false);
   const [educationExpanded, setEducationExpanded] = useState(false);
 
@@ -108,11 +109,13 @@ export default function App() {
         animate={{ y: 0 }}
         className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-[#e0e0e0]"
       >
-        <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-5 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src={verdenaTree} alt="Verdena" className="h-10 w-10 object-contain" />
+            <img src={verdenaTree} alt="Verdena" className="h-8 w-8 md:h-10 md:w-10 object-contain" />
           </div>
-          <div className="flex gap-8 items-center">
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex gap-8 items-center">
             <a href="#about" className="text-sm font-medium hover:text-[#53354a] transition-colors">About</a>
             <a href="#work" className="text-sm font-medium hover:text-[#53354a] transition-colors">Current Work</a>
             <a href="#projects" className="text-sm font-medium hover:text-[#53354a] transition-colors">Projects</a>
@@ -128,7 +131,51 @@ export default function App() {
               Connect
             </a>
           </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col gap-1.5 p-2"
+          >
+            <span className={`w-6 h-0.5 bg-[#1a1a1a] transition-all ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`w-6 h-0.5 bg-[#1a1a1a] transition-all ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`w-6 h-0.5 bg-[#1a1a1a] transition-all ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            className="md:hidden bg-white border-t border-[#e0e0e0] px-4 py-6 space-y-4"
+          >
+            {['About', 'Current Work', 'Projects', 'Creative'].map((item) => (
+              <a
+                key={item}
+                href={`#${item === 'Current Work' ? 'work' : item.toLowerCase()}`}
+                onClick={() => setMenuOpen(false)}
+                className="block text-base font-medium text-[#1a1a1a] hover:text-[#53354a]"
+              >
+                {item}
+              </a>
+            ))}
+            <button
+              onClick={() => { setChatOpen(true); setMenuOpen(false); }}
+              className="block text-base font-medium text-[#1a1a1a] hover:text-[#53354a] flex items-center gap-2"
+            >
+              <MessageCircle className="w-4 h-4" />
+              Talk to me
+            </button>
+            <a
+              href="#contact"
+              onClick={() => setMenuOpen(false)}
+              className="inline-block bg-[#53354a] text-white px-6 py-3 rounded-full text-sm font-medium"
+            >
+              Connect
+            </a>
+          </motion.div>
+        )}
       </motion.nav>
 
       {/* Hero - Full bleed with image */}
@@ -151,7 +198,7 @@ export default function App() {
           style={{ opacity: heroOpacity }}
           className="relative z-20 w-full pb-32 pt-40"
         >
-          <div className="max-w-7xl mx-auto px-8">
+          <div className="max-w-7xl mx-auto px-5 md:px-8">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
@@ -164,7 +211,7 @@ export default function App() {
                 <span className="text-white/80 text-lg font-medium">Verdena</span>
               </div>
 
-              <h1 className="text-7xl md:text-9xl font-black text-white mb-8 tracking-tight leading-[0.9]">
+              <h1 className="text-4xl md:text-7xl lg:text-9xl font-black text-white mb-8 tracking-tight leading-[0.9]">
                 Growth<br />
                 at the intersection of strategy, technology and creativity
               </h1>
@@ -173,17 +220,17 @@ export default function App() {
                 Experienced Business Leader | Advisor | Regional CEO | Marketing & Sales Professional | Investor | Speaker | Author | Creator
               </p>
 
-              <div className="flex gap-4">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <a
                   href="#projects"
-                  className="bg-white text-[#53354a] px-8 py-4 rounded-full hover:bg-white/90 transition-all font-bold inline-flex items-center gap-2 group"
+                  className="bg-white text-[#53354a] px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-white/90 transition-all font-bold inline-flex items-center justify-center gap-2 group"
                 >
                   See my work
                   <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
                 <button
                   onClick={() => setChatOpen(true)}
-                  className="border-2 border-white text-white px-8 py-4 rounded-full hover:bg-white hover:text-[#53354a] transition-all font-bold inline-flex items-center gap-2"
+                  className="border-2 border-white text-white px-6 md:px-8 py-3 md:py-4 rounded-full hover:bg-white hover:text-[#53354a] transition-all font-bold inline-flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-5 h-5" />
                   Talk to me
@@ -205,8 +252,8 @@ export default function App() {
       </section>
 
       {/* About - Split Editorial Layout */}
-      <section id="about" className="relative z-10 pt-32 pb-16 bg-white scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-8">
+      <section id="about" className="relative z-10 pt-20 md:pt-32 pb-16 bg-white scroll-mt-20 md:scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -228,7 +275,7 @@ export default function App() {
             {/* Right: Content */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] mb-6 leading-tight">
                   A bit about me and what I do.
                 </h2>
               </div>
@@ -352,7 +399,7 @@ export default function App() {
 
       {/* Current Work Content */}
       <section className="relative z-10 pt-16 pb-16 bg-[#fafafa]">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -413,7 +460,7 @@ export default function App() {
 
       {/* Projects Content */}
       <section className="relative z-10 pt-16 pb-16 bg-white">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -460,7 +507,7 @@ export default function App() {
 
       {/* Creative Content */}
       <section className="relative z-10 pt-16 pb-16 bg-[#fafafa]">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -509,7 +556,7 @@ export default function App() {
 
       {/* Investments Content */}
       <section className="relative z-10 pt-16 pb-16 bg-white">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -517,7 +564,7 @@ export default function App() {
             transition={{ duration: 0.8 }}
           >
 
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               <InvestmentCard
                 name="375ai"
                 description="Decentralised edge data intelligence network leveraging AI and blockchain."
@@ -624,7 +671,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="bg-[#1a1a1a] text-white py-12">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-3">
               <img src={verdenaTree} alt="Verdena" className="h-12 w-12 brightness-0 invert opacity-60" />
@@ -634,7 +681,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex gap-8 text-sm opacity-75">
+            <div className="flex flex-wrap gap-4 md:gap-8 text-sm opacity-75 justify-center md:justify-start">
               <a href="#about" className="hover:opacity-100 transition-opacity">About</a>
               <a href="#work" className="hover:opacity-100 transition-opacity">Work</a>
               <a href="#projects" className="hover:opacity-100 transition-opacity">Projects</a>
@@ -655,10 +702,10 @@ export default function App() {
         transition={{ delay: 1.5, type: "spring", stiffness: 260, damping: 20 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-8 right-8 bg-[#53354a] text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-[#53354a]/50 transition-shadow z-50 flex items-center gap-3 font-bold"
+        className="fixed bottom-6 right-4 md:bottom-8 md:right-8 bg-[#53354a] text-white p-4 md:px-6 md:py-4 rounded-full shadow-2xl hover:shadow-[#53354a]/50 transition-shadow z-50 flex items-center gap-3 font-bold"
       >
         <MessageCircle className="w-5 h-5" />
-        <span>Talk to me</span>
+        <span className="hidden md:inline">Talk to me</span>
       </motion.button>
 
       {/* Chat Drawer */}
@@ -911,20 +958,20 @@ function SectionHero({
   subtitle?: string;
 }) {
   return (
-    <section id={id} className="relative h-[50vh] min-h-[400px] flex items-end scroll-mt-24 overflow-hidden">
+    <section id={id} className="relative h-[40vh] md:h-[50vh] min-h-[300px] md:min-h-[400px] flex items-end scroll-mt-20 md:scroll-mt-24 overflow-hidden">
       <div className="absolute inset-0">
         <img src={image} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
       </div>
       <div className="relative z-10 w-full pb-12">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-7xl mx-auto px-5 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-4 leading-tight max-w-4xl whitespace-pre-line">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight max-w-4xl whitespace-pre-line">
               {title}
             </h2>
             {subtitle && (
