@@ -217,7 +217,7 @@ export default function App() {
               </h1>
 
               <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl leading-relaxed">
-                Experienced Business Leader | Advisor | Regional CEO | Marketing & Sales Professional | Investor | Speaker | Author | Creator
+                Using AI extensively to develop systems and solutions that bring ideas to life, and drive personal and business growth
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
