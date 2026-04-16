@@ -32,7 +32,7 @@ Advising a firm that helps European and US industrial technology companies scale
 ### Accenture *(6.5 years)*
 
 **Managing Director, Enterprise B2B Practice Lead — Accenture Song APAC** *(April 2021–August 2025)*
-Led the APAC Enterprise B2B Sales & Commercial Excellence practice, helping clients build and enhance their sales organisations. Empowered clients with technology (particularly CRM and CPQ) and operational support to improve sales team capacity, capability, performance, and efficiency. Key clients included Google, Unilever, Mitsubishi Chemical Group, LG, and Telstra. Pioneered the APAC CMO Roundtable, connecting 50+ blue-chip CMOs across the region.
+Led the APAC Enterprise B2B Sales & Commercial Excellence practice, helping clients build and enhance their sales organisations. Empowered clients with technology (particularly CRM and CPQ) and operational support to improve sales team capacity, capability, performance, and efficiency. I have worked for client across a range of industries including software and platforms, resources and energy, telecommuncations, travel and CPG. Pioneered the APAC CMO Roundtable, connecting 50+ blue-chip CMOs across the region.
 
 **Managing Director, Marketing, Sales & Customer Operations — Accenture AAPAC** *(March 2019–April 2021)*
 Established and led the APAC Marketing Operations business, then expanded it to include sales and customer service operations. Delivered scalable, cost-efficient operations across content marketing, digital inside sales, and contact centre services for B2B and B2C clients globally.

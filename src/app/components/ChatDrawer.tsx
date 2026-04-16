@@ -18,8 +18,12 @@ export default function ChatDrawer({
   onOpenChange: (open: boolean) => void;
 }) {
   const [messages, setMessages] = useState<Message[]>(() => {
-    const saved = sessionStorage.getItem('verdena-chat');
-    return saved ? JSON.parse(saved) : [];
+    try {
+      const saved = sessionStorage.getItem('verdena-chat');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
   });
   const [input, setInput] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
