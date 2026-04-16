@@ -217,7 +217,7 @@ export default function App() {
               </h1>
 
               <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl leading-relaxed">
-                Using AI extensively to develop systems and solutions that bring ideas to life, and drive personal and business growth
+                Using AI extensively to develop systems and solutions that bring ideas to life, and drive personal and business growth for my clients
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -282,16 +282,16 @@ export default function App() {
 
               <div className="space-y-6 text-lg leading-relaxed text-[#4a4a4a]">
                 <p>
-                  I'm a business leader and entrepreneur with <strong className="text-[#1a1a1a]">30+ years of experience</strong> across EMEA and APAC, with a passion for bringing technology and creativity to strategy.
+                  I'm a business leader and entrepreneur with <strong className="text-[#1a1a1a]">30+ years of experience</strong> across APAC and EMEA, with a passion for bringing technology and creativity to strategy (which is why I am so excited about the opportunity for AI to fundamentally change how we think and work).
                 </p>
                 <p>
-                  From co-founding one of the world's first programmatic media platforms (Xaxis) to leading large EMEA and APAC practices at Accenture and WPP, I've spent my career helping companies in the technology and creative industries accelerate growth.
+                  From co-founding one of the world's first programmatic media platforms (Xaxis) to leading large APAC and EMEA practices at Accenture and WPP, I've spent my career helping companies in the technology and creative industries accelerate growth.
                 </p>
                 <p>
-                  I founded <strong className="text-[#53354a]">Verdena</strong> in 2025 to help organizations across Asia Pacific align technology and strategy with commercial strategy and real-world execution.
+                  I founded <strong className="text-[#53354a]">Verdena</strong> in 2025 to help organizations across Asia Pacific align AI technology and strategy with commercial strategy and practical, real-world execution.
                 </p>
                 <p className="italic text-[#53354a] border-l-4 border-[#53354a] pl-6">
-                  That's all well and good – but you should check out the projects I'm working on now. They are really cool.
+                  AI frees us to think, create, and solve bigger problems. The transformation isn't efficiency — it's freedom to create.
                 </p>
               </div>
 
@@ -385,7 +385,7 @@ export default function App() {
                   <LogoItem logo={logoMiniMBA} role="Mini MBA in Marketing" company="Mark Ritson / MiniMBA" years="2025–2026" />
                   <LogoItem logo={logoSaid} role="Blockchain Strategy Programme" company="Saïd Business School, University of Oxford" years="2022" />
                   <LogoItem logo={logoLBS} role="MBA" company="London Business School (exchange at Kellogg, Northwestern)" years="2003–2005" />
-                  <LogoItem logo={logoKaplan} role="Graduate Diploma in Applied Finance" company="Securities Institute of Australia" years="1996–2000" />
+                  <LogoItem logo={logoKaplan} role="Graduate Diploma in Applied Finance" company="Securities Institute of Australia (Kaplan)" years="1996–2000" />
                   <LogoItem logo={logoMonash} role="Bachelor of Economics (Hons)" company="Monash University, Melbourne" years="1992–1995" last />
                 </motion.div>
               )}
@@ -410,7 +410,7 @@ export default function App() {
               <SimpleCard
                 title="Verdena"
                 role="Founder & Principal"
-                description="Strategic consulting for businesses across APAC. Aligning technology and strategy with commercial strategy and real-world execution."
+                description="AI enabled strategic consulting for individuals and businesses across APAC. Aligning technology and strategy with commercial strategy and practical, real-world execution."
                 highlights={["Growth Strategy", "Data & Technology", "Commercial Execution"]}
                 logo={logoVerdena}
               />
@@ -426,7 +426,7 @@ export default function App() {
               <SimpleCard
                 title="The Marketing Society"
                 role="Board Member (Singapore Chapter)"
-                description="Contributing to the advancement of marketing leadership and practice across the industry through governance and strategic direction."
+                description="Leading the B2B marketing practice, contributing to the advancement of marketing leadership and practice across the industry through governance and strategic direction."
                 highlights={["Industry Leadership", "Professional Development", "Strategic Governance"]}
                 logo={logoMarketingSociety}
               />
@@ -492,7 +492,7 @@ export default function App() {
               <ImmersiveProjectCard
                 image={zoomout}
                 title="ZoomOut Project"
-                category="Education × Future of work"
+                category="AI x Publishing"
                 description="A series of picture-story books that inspire and engage kids around the future and structure of work. Building context early."
                 url="https://zoomoutproject.com"
                 stats={["Picture Books", "Work & Future", "In Development"]}
@@ -503,7 +503,7 @@ export default function App() {
       </section>
 
       {/* Creative Hero */}
-      <SectionHero id="creative" image={creativePhoto} title="Creativity with disciplined execution" subtitle='AI is enabling me to create business and products like I could never have done before. But for me that makes it more important than ever to dedicate some of my time to creating things in the "real world".' />
+      <SectionHero id="creative" image={creativePhoto} title="Creativity with disciplined execution" subtitle='AI is enabling me to create businesses and products I could never have built before. Which makes it even more important to spend time creating in the real world.' />
 
       {/* Creative Content */}
       <section className="relative z-10 pt-16 pb-16 bg-[#fafafa]">
@@ -578,17 +578,17 @@ export default function App() {
                 logo={logoCogX}
               />
               <InvestmentCard
-                name="TiNDLE Foods (exited)"
-                description="Plant-based food company on a mission to make sustainable eating delicious."
-                since="2021"
-                logo={logoTindle}
-              />
-              <InvestmentCard
                 name="Fira BeachClub Group"
                 description="Experience-led hospitality brand in Phuket, Thailand — and the only investment I have made where I can drink a beer and watch my favourite DJs."
                 since="2024"
                 role="Investor & Advisor"
                 logo={logoFira}
+              />
+              <InvestmentCard
+                name="TiNDLE Foods (exited)"
+                description="Plant-based food company on a mission to make sustainable eating delicious."
+                since="2021"
+                logo={logoTindle}
               />
             </div>
           </motion.div>
