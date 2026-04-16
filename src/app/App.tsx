@@ -586,7 +586,7 @@ export default function App() {
               />
               <InvestmentCard
                 name="TiNDLE Foods (exited)"
-                description="Plant-based food company on a mission to make sustainable eating delicious."
+                description="(EXITED) Plant-based food company on a mission to make sustainable eating delicious."
                 since="2021"
                 logo={logoTindle}
               />
