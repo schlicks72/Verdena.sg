@@ -224,6 +224,25 @@ setInterval(() => {
 // ============================================
 const client = new OpenAI();
 const resend = new Resend(process.env.RESEND_API_KEY);
+const CRM_WEBHOOK_URL = process.env.CRM_WEBHOOK_URL || '';
+const CRM_WEBHOOK_SECRET = process.env.CRM_WEBHOOK_SECRET || '';
+
+async function notifyCrm(payload) {
+  if (!CRM_WEBHOOK_URL) return;
+  try {
+    await fetch(CRM_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${CRM_WEBHOOK_SECRET}`,
+      },
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(5000),
+    });
+  } catch {
+    console.warn('CRM webhook failed (non-fatal)');
+  }
+}
 
 app.post('/api/chat', chatLimiter, async (req, res) => {
   trackRequest(req.ip, '/api/chat');
@@ -327,6 +346,17 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       replyTo: email,
       subject: `Website enquiry from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'Not provided'}\nCountry: ${country || 'Not provided'}\n\n${message}`,
+    });
+
+    await notifyCrm({
+      brand: 'Verdena',
+      event: 'contact_form',
+      email,
+      first_name: firstName,
+      last_name: lastName,
+      company: company || '',
+      country: country || '',
+      message,
     });
 
     res.json({ success: true });
