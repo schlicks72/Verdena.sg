@@ -687,6 +687,7 @@ export default function App() {
               <a href="#projects" className="hover:opacity-100 transition-opacity">Projects</a>
               <a href="#creative" className="hover:opacity-100 transition-opacity">Creative</a>
               <a href="#contact" className="hover:opacity-100 transition-opacity">Contact</a>
+              <a href="/privacy" className="hover:opacity-100 transition-opacity">Privacy</a>
             </div>
 
             <p className="text-xs opacity-60">© 2026 Verdena. All rights reserved.</p>

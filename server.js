@@ -335,10 +335,15 @@ app.post('/api/chat', chatLimiter, async (req, res) => {
 // ============================================
 app.post('/api/contact', contactLimiter, async (req, res) => {
   trackRequest(req.ip, '/api/contact');
-  const { firstName, lastName, company, country, email, message } = req.body;
+  const { firstName, lastName, company, country, email, message, consent } = req.body;
 
   if (!firstName || !lastName || !email || !message) {
     return res.status(400).json({ error: 'All required fields must be provided' });
+  }
+
+  // PDPA — require explicit consent before processing or forwarding the submission
+  if (!consent) {
+    return res.status(400).json({ error: 'You must accept the Privacy Policy to submit this form.' });
   }
 
   // Validate email format
@@ -365,6 +370,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
   }
 
   const name = `${firstName} ${lastName}`.trim();
+  const consentAt = new Date().toISOString();
 
   try {
     await resend.emails.send({
@@ -384,6 +390,8 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
       company: company || '',
       country: country || '',
       message,
+      consent: true,
+      consent_at: consentAt,
     });
 
     res.json({ success: true });

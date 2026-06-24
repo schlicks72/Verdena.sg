@@ -4,12 +4,20 @@ import { Send, CheckCircle } from 'lucide-react';
 const API_URL = import.meta.env.PROD ? '/api/contact' : 'http://localhost:3000/api/contact';
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ firstName: '', lastName: '', company: '', country: '', email: '', message: '' });
+  const [form, setForm] = useState({ firstName: '', lastName: '', company: '', country: '', email: '', message: '', consent: false });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [consentError, setConsentError] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.firstName || !form.lastName || !form.email || !form.message) return;
+
+    // Require explicit consent before submitting (PDPA)
+    if (!form.consent) {
+      setConsentError(true);
+      return;
+    }
+    setConsentError(false);
 
     setStatus('sending');
     try {
@@ -21,7 +29,7 @@ export default function ContactForm() {
 
       if (res.ok) {
         setStatus('sent');
-        setForm({ firstName: '', lastName: '', company: '', country: '', email: '', message: '' });
+        setForm({ firstName: '', lastName: '', company: '', country: '', email: '', message: '', consent: false });
       } else {
         setStatus('error');
       }
@@ -133,6 +141,37 @@ export default function ContactForm() {
           className="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/40 focus:outline-none focus:border-white/50 transition-colors text-sm resize-none"
           placeholder="What can I help with?"
         />
+      </div>
+
+      <div>
+        <label htmlFor="consent" className="flex items-start gap-3 cursor-pointer">
+          <input
+            id="consent"
+            type="checkbox"
+            checked={form.consent}
+            onChange={(e) => {
+              setForm({ ...form, consent: e.target.checked });
+              if (e.target.checked) setConsentError(false);
+            }}
+            aria-invalid={consentError}
+            className="mt-1 h-4 w-4 flex-shrink-0 rounded border border-white/30 bg-white/10 accent-white cursor-pointer"
+          />
+          <span className="text-sm text-white/80 leading-relaxed">
+            I consent to my data being stored and processed as described in the{' '}
+            <a
+              href="/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-white transition-colors"
+            >
+              Privacy Policy
+            </a>
+            . I understand I can request deletion of my data at any time.
+          </span>
+        </label>
+        {consentError && (
+          <p className="text-red-300 text-sm mt-2">Please accept the Privacy Policy to continue.</p>
+        )}
       </div>
 
       {status === 'error' && (
