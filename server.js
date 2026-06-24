@@ -375,7 +375,7 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
   try {
     await resend.emails.send({
       from: 'Website Contact <contact@verdena.sg>',
-      to: 'caspar.schlickum@verdena.sg',
+      to: 'admin@verdena.sg',
       replyTo: email,
       subject: `Website enquiry from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nCompany: ${company || 'Not provided'}\nCountry: ${country || 'Not provided'}\n\n${message}`,
