@@ -103,10 +103,10 @@ export default function PrivacyPolicy() {
               personal data we hold about you, and to withdraw your consent at any time. To
               make a request, email{' '}
               <a
-                href="mailto:caspar.schlickum@verdena.sg"
+                href="mailto:admin@verdena.sg"
                 className="text-[#53354a] underline hover:text-[#6b4460] transition-colors"
               >
-                caspar.schlickum@verdena.sg
+                admin@verdena.sg
               </a>
               . We will action verified requests within a reasonable period.
             </p>
@@ -118,10 +118,10 @@ export default function PrivacyPolicy() {
               If you have any questions about this policy or how we handle your data, please
               email{' '}
               <a
-                href="mailto:caspar.schlickum@verdena.sg"
+                href="mailto:admin@verdena.sg"
                 className="text-[#53354a] underline hover:text-[#6b4460] transition-colors"
               >
-                caspar.schlickum@verdena.sg
+                admin@verdena.sg
               </a>
               .
             </p>

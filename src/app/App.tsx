@@ -648,11 +648,11 @@ export default function App() {
 
             <div className="flex gap-6 justify-center flex-wrap mt-12 pt-12 border-t border-white/20">
               <a
-                href="mailto:caspar.schlickum@verdena.sg"
+                href="mailto:admin@verdena.sg"
                 className="flex items-center gap-3 text-white/70 hover:text-white transition-colors text-sm group"
               >
                 <Mail className="w-4 h-4" />
-                caspar.schlickum@verdena.sg
+                admin@verdena.sg
               </a>
               <a
                 href="https://www.linkedin.com/in/casparschlickum"
