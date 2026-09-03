@@ -70,7 +70,7 @@ const watchImages = [watch1, watch2, watch3, watch4, watch5, watch6, watch7, wat
 
 // Pick a random hero photo once on page load
 // Portrait
-import portraitBW from '../assets/CS Pic (B&W).jpg';
+import portraitBW from '../assets/CASPAR SCHLICKUM NEW.jpg';
 
 // Shuffle and assign a unique random photo to each section hero
 const shuffledPhotos = [...photoImages].sort(() => Math.random() - 0.5);
