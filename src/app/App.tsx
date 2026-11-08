@@ -486,8 +486,7 @@ export default function App() {
                 description="Building the world's largest library of infographics and their creators."
                 url="https://infogrfk.com"
                 stats={["Infographic Library", "Creator Credits", "iOS App"]}
-                reversed
-                imageContain
+                imageFull
               />
 
               <ImmersiveProjectCard
@@ -739,6 +738,7 @@ function ImmersiveProjectCard({
   stats,
   reversed = false,
   imageContain = false,
+  imageFull = false,
 }: {
   image: string;
   title: string;
@@ -748,6 +748,7 @@ function ImmersiveProjectCard({
   stats: string[];
   reversed?: boolean;
   imageContain?: boolean;
+  imageFull?: boolean;
 }) {
   return (
     <motion.a
@@ -758,19 +759,29 @@ function ImmersiveProjectCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8 }}
-      className={`group grid md:grid-cols-2 gap-8 items-center bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${
-        reversed ? 'md:grid-flow-dense' : ''
+      className={`group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 ${
+        imageFull
+          ? 'block'
+          : `grid md:grid-cols-2 gap-8 items-center ${reversed ? 'md:grid-flow-dense' : ''}`
       }`}
     >
-      <div className={`aspect-[16/10] overflow-hidden ${reversed ? 'md:col-start-2' : ''}`}>
+      <div
+        className={`overflow-hidden ${
+          imageFull ? 'w-full' : `aspect-[16/10] ${reversed ? 'md:col-start-2' : ''}`
+        }`}
+      >
         <img
           src={image}
           alt={title}
-          className={`w-full h-full ${imageContain ? 'object-contain' : 'object-cover'} group-hover:scale-110 transition-transform duration-700`}
+          className={`w-full ${
+            imageFull
+              ? 'h-auto block'
+              : `h-full ${imageContain ? 'object-contain' : 'object-cover'}`
+          } group-hover:scale-110 transition-transform duration-700`}
         />
       </div>
 
-      <div className={`p-10 ${reversed ? 'md:col-start-1 md:row-start-1' : ''}`}>
+      <div className={`p-10 ${!imageFull && reversed ? 'md:col-start-1 md:row-start-1' : ''}`}>
         <span className="text-[#53354a] font-bold text-xs tracking-widest uppercase mb-3 block">
           {category}
         </span>
