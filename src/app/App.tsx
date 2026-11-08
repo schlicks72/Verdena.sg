@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { useRef, useState, useEffect } from 'react';
 import verdenaTree from '../assets/bebf6597e16254ec6a193c4f4208d51ea66c8886.png';
-import ccoc from '../assets/2e44a174095588209a7d143405b4e651771cbb99.png';
-import maskforge from '../assets/c1758f93fed1a9921f5cf29fe778bda06ba45946.png';
+import infogrfk from '../assets/InfogrfkNEW.jpg';
+import maskforge from '../assets/MaskforgePictureNEW.jpg';
 import zoomout from '../assets/f0920058df1d2116b868235cd6b521fad6f481e1.png';
 import brandGuidelines from '../assets/3f55126ab4be5a53363111be5975ec6628d49600.png';
 
@@ -480,12 +480,12 @@ export default function App() {
               />
 
               <ImmersiveProjectCard
-                image={ccoc}
-                title="Caspar's Cabinet of Curiosities"
+                image={infogrfk}
+                title="infogrfk."
                 category="AI × Curation & Discovery"
-                description="A curated repository of things I find interesting, meaningful, and worth sharing. My own personal digital cabinet of wonder."
-                url="https://www.ccoc.info"
-                stats={["Weekly Updates", "Curated Collection", "Live Site"]}
+                description="Building the world's largest library of infographics and their creators."
+                url="https://infogrfk.com"
+                stats={["Infographic Library", "Creator Credits", "iOS App"]}
                 reversed
               />
 
