@@ -487,6 +487,7 @@ export default function App() {
                 url="https://infogrfk.com"
                 stats={["Infographic Library", "Creator Credits", "iOS App"]}
                 reversed
+                imageContain
               />
 
               <ImmersiveProjectCard
