@@ -514,7 +514,7 @@ Known creative sites / projects:
 - bc4fmodels.com / bc4f.com — model-making / creative work
 - zoomoutproject.com — children's future-of-work storytelling project
 - maskforge.ai — AI-enabled creative sticker / mask platform
-- ccoc.info — project reference
+- infogrfk.com — infographic library, discovery and creator-credit platform
 
 ---
 
